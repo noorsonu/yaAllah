@@ -77,6 +77,7 @@ public class SecurityConfig {
                                                 .requestMatchers(
                                                                 "/favicon.ico",
                                                                 "/**",
+                                                                "/",
                                                                 "/error",
                                                                 "/public/**",
                                                                 "/uploads/**",
@@ -86,7 +87,8 @@ public class SecurityConfig {
                                                                 "/swagger-resources/**",
                                                                 "/webjars/**",
                                                                 "/api/auth/**",
-                                                                "/api/account/**")
+                                                                "/api/account/**",
+                                                                "/webjars/**")
                                                 .permitAll()
                                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                                                 .anyRequest().authenticated())
