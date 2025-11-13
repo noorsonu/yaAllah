@@ -75,16 +75,18 @@ public class SecurityConfig {
                                                                 .accessDeniedHandler(accessDeniedHandler))
                                 .authorizeHttpRequests(auth -> auth
                                                 .requestMatchers(
-                                                                "/**",
-                                                                "/api/account/**",
-                                                                "/favicon.ico", "/public/**",
+                                                                "/favicon.ico",
+                                                                "/",
+                                                                "/error",
+                                                                "/public/**",
+                                                                "/uploads/**",
                                                                 "/v3/api-docs/**",
                                                                 "/swagger-ui.html",
                                                                 "/swagger-ui/**",
                                                                 "/swagger-resources/**",
                                                                 "/webjars/**",
-                                                                "/uploads/**",
-                                                                "/error")
+                                                                "/api/auth/**",
+                                                                "/api/account/**")
                                                 .permitAll()
                                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                                                 .anyRequest().authenticated())
