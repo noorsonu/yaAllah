@@ -26,7 +26,6 @@ com\main\services\PostService.class
 com\main\config\SecurityConfig.class
 com\main\security\JwtUtils.class
 com\main\dtos\AdminDashboardStatsDto.class
-com\main\config\WebConfig.class
 com\main\config\SwaggerConfig.class
 com\main\dtos\UpdatePostRequest.class
 com\main\serviceImpls\ImageServiceImpl.class
@@ -37,7 +36,6 @@ com\main\services\UserService.class
 com\main\dtos\UpdateCommentRequest.class
 com\main\services\OtpService.class
 com\main\controllers\AdminController.class
-com\main\config\CorsConfig$1.class
 com\main\dtos\AdminUpdateUserRequest.class
 com\main\dtos\AuthRequest.class
 com\main\security\TokenBlackList.class
@@ -49,7 +47,6 @@ com\main\dtos\UserDto.class
 com\main\repositories\OtpCodeRepository.class
 com\main\serviceImpls\PostServiceImpl.class
 com\main\dtos\SetPhoneRequest.class
-com\main\config\CorsConfig.class
 com\main\mappers\UserMapper.class
 com\main\repositories\ImageRepository.class
 com\main\dtos\CreateCommentRequest.class
