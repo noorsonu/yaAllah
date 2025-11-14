@@ -60,14 +60,12 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
-        // Use origin patterns so we can return the requesting Origin when credentials are allowed
-        config.setAllowedOriginPatterns(List.of(
+        config.setAllowedOrigins(List.of(
                 "https://allah-blog.vercel.app",
                 "http://localhost:3000",
                 "https://springboot-with-postgres.onrender.com"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
-        config.setExposedHeaders(List.of("Authorization"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
