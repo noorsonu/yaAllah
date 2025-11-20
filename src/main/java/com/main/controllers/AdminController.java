@@ -137,18 +137,7 @@ public class AdminController {
         }
     }
 
-    // Comment Management
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/comments")
-    public ResponseEntity<?> getAllCommentsForAdmin() {
-        try {
-            List<AdminCommentDto> comments = adminService.getAllCommentsWithDetails();
-            return ResponseEntity.ok(comments);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error fetching comments");
-        }
-    }
+
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/comments/{commentId}")

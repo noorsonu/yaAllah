@@ -124,6 +124,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<AdminCommentDto> getAllCommentsWithDetails() {
         return commentRepository.findAll().stream()
                 .map(this::convertToAdminCommentDto)

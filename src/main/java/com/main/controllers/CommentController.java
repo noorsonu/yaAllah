@@ -1,5 +1,6 @@
 package com.main.controllers;
 
+import com.main.dtos.AdminCommentDto;
 import com.main.dtos.CommentResponseDto;
 import com.main.dtos.CreateCommentRequest;
 import com.main.dtos.UpdateCommentRequest;
@@ -8,8 +9,10 @@ import com.main.entities.Post;
 import com.main.entities.UserEntity;
 import com.main.repositories.PostRepository;
 import com.main.repositories.UserRepository;
+import com.main.services.AdminService;
 import com.main.services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -28,6 +31,9 @@ public class CommentController {
 
     @Autowired
     private PostRepository postRepository;
+    
+    @Autowired
+	private AdminService adminService;
 
     @Autowired
     private UserRepository userRepository;
@@ -69,7 +75,7 @@ public class CommentController {
     }
 
     // ADMIN: get comments by user id or name
-    @GetMapping("/admin/comments/search")
+    @GetMapping("/comments/search")
     public ResponseEntity<List<CommentResponseDto>> adminGetComments(@RequestParam(required = false) Long userId,
                                               @RequestParam(required = false) String name) {
         if (userId != null) {
@@ -87,5 +93,17 @@ public class CommentController {
     public ResponseEntity<?> adminDeleteByUser(@PathVariable Long userId) {
         commentService.deleteAllByUserId(userId);
         return ResponseEntity.ok(Map.of("message", "All comments by user deleted"));
+    }
+    
+
+    @GetMapping("/comments")
+    public ResponseEntity<?> getAllCommentsForAdmin() {
+        try {
+            List<AdminCommentDto> comments = adminService.getAllCommentsWithDetails();
+            return ResponseEntity.ok(comments);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error fetching comments");
+        }
     }
 }
